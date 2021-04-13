@@ -1,0 +1,20 @@
+[Unit]
+Description=Service to sync rclone remote with JabRef library data
+#BindsTo=network-online.target
+#After=network-online.target
+
+[Service]
+#Environment=
+#EnvironmentFile=
+ExecStart=/home/tmpuser/.local/bin/jabref_sync.sh
+ExecStop=killall inotifywait
+Restart=on-failure
+StartLimitBurst=2
+StartLimitInterval=10
+#User=
+#Group=
+Type=simple
+StandardOutput=journal+console
+
+[Install]
+WantedBy=multi-user.target
