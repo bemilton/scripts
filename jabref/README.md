@@ -3,6 +3,7 @@
 ## Requirements:
 
 * Remote storage 
+* inotify-tools [https://github.com/inotify-tools/inotify-tools/wiki](https://github.com/inotify-tools/inotify-tools/wiki)
 * rclone ([https://rclone.org/](https://rclone.org/)) configured to use said remote storage
 
 Script achieves the following:
@@ -16,6 +17,12 @@ Yes, this is only a problem because you (I) are step-toe'ing around the actual p
 
 * Place it in your `~/.local/bin` & `chmod +x` that sht. You know what you're doing.
 * Setup the Systemd service:
+    - update the home/user path in the service unit file to reflect yours
     - `systemctl --user enable /path/to/where/you/have/jabrefremotesync.service`
     - `systemctl --user start jabrefremotesync.service`
     - test all is working: `journalctl --user -f -u jabrefremotesync.service`
+
+## References:
+
+1. [inotifywait](https://linux.die.net/man/1/inotifywait)
+2. [inotify](https://www.kernel.org/doc/html/latest/filesystems/inotify.html)
